@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1600" viewBox="0 0 2560 1600" preserveAspectRatio="xMidYMid slice">
+<defs>
+  <linearGradient id="base" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#30373e"/><stop offset=".48" stop-color="#151b21"/><stop offset="1" stop-color="#080d13"/></linearGradient>
+  <linearGradient id="fold" x1=".1" y1=".1" x2=".9" y2=".9"><stop stop-color="#080d13"/><stop offset=".35" stop-color="#232d37"/><stop offset=".58" stop-color="#65707b"/><stop offset=".61" stop-color="#89949d"/><stop offset=".65" stop-color="#28323c"/><stop offset="1" stop-color="#0a1119"/></linearGradient>
+  <linearGradient id="line"><stop stop-color="#c9d3db" stop-opacity="0"/><stop offset=".5" stop-color="#bac8d2" stop-opacity=".25"/><stop offset="1" stop-color="#bac8d2" stop-opacity="0"/></linearGradient>
+  <radialGradient id="shade"><stop offset=".2" stop-color="#020710" stop-opacity=".05"/><stop offset="1" stop-color="#020710" stop-opacity=".4"/></radialGradient>
+</defs>
+<path fill="url(#base)" d="M0 0h2560v1600H0z"/>
+<path d="M-420 1670C660 1480 640 735 1520 485S2580 330 2940-200V1600H-420Z" fill="url(#fold)"/>
+<path d="M-420 1670C660 1480 640 735 1520 485S2580 330 2940-200" fill="none" stroke="url(#line)" stroke-width="2"/>
+<path fill="url(#shade)" d="M0 0h2560v1600H0z"/>
+</svg>

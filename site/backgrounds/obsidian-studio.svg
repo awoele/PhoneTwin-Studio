@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1600" viewBox="0 0 2560 1600" preserveAspectRatio="xMidYMid slice">
+<defs>
+  <radialGradient id="base" cx=".5" cy=".28" r=".8"><stop stop-color="#292c32"/><stop offset=".48" stop-color="#121419"/><stop offset="1" stop-color="#060709"/></radialGradient>
+  <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#acb5c0" stop-opacity=".22"/><stop offset=".45" stop-color="#606975" stop-opacity=".045"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
+  <linearGradient id="panel" x1="0" y1="0" x2="1" y2=".5"><stop stop-color="#050607"/><stop offset="1" stop-color="#1d2026"/></linearGradient>
+</defs>
+<path fill="url(#base)" d="M0 0h2560v1600H0z"/>
+<path d="M0 0h515L50 1600H0z" fill="url(#panel)" opacity=".7"/>
+<path d="M515 0 50 1600" stroke="url(#edge)" stroke-width="2"/>
+<path d="M2230 0h330v1600h-690z" fill="#020305" opacity=".35"/>
+<path d="M2230 0 1870 1600" stroke="url(#edge)" stroke-width="1.5"/>
+</svg>
