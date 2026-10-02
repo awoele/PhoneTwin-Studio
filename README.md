@@ -7,6 +7,7 @@
 - 3D 手机展示、视角调整与固定视角保存
 - 动态背景与灯光预设
 - 镜头预设、自定义运动轨迹及方案保存
+- 10 种运镜、3 组成组编排；逐镜调整顺序、运动时长、停留与节奏
 - 图片/视频导入与浏览器录制，录制时按 P 播放镜头
 - 充电线、闪光和手势光尾展示效果
 
@@ -41,6 +42,7 @@
 
 - 开源基础：[ReinhartL/PhoneTwin-Studio](https://github.com/ReinhartL/PhoneTwin-Studio)，MIT，保留原始许可。
 - 工作台设计与功能迭代：杨玄一，AI 辅助实现。
+- 导演配方参考：[video-shotcraft](https://github.com/Vincentwei1021/video-shotcraft)（Apache-2.0），适配为实时 3D 手机运镜，不包含其 Remotion 引擎、音效资源或剪映导出功能。
 - 手机模型：[Phone 17 Pro Max · Ranguel](https://sketchfab.com/3d-models/phone-17-pro-max-66809964eff043a39d553c3795995008)，[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)。已适配模型比例、动态屏幕纹理、材质及灯光。
 - 模型、图片和第三方素材的权利归各自权利人；不以代码 MIT 许可替代素材许可。
 
