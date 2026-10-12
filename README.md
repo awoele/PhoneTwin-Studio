@@ -4,6 +4,10 @@
 
 **[打开在线工作台](https://awoele.github.io/PhoneTwin-Studio/)**
 
+**[观看 TravelFilm Showcase](https://awoele.github.io/PhoneTwin-Studio/showcase/?autoplay=1&loop=1)**
+
+Showcase 展示以 PhoneTwin Studio 渲染能力制作的35秒连续3D宣传预演，包含八种运镜、八张用户提供的 iPhone 页面截图、四种动态背景与悬浮定版。当前为浏览器实时播放的截图预演，并非 App 操作录屏或已导出的 MP4；素材只用于本展示，不随代码 MIT 许可重新授权。
+
 - 3D 手机展示、视角调整与固定视角保存
 - 动态背景与灯光预设
 - 镜头预设、自定义运动轨迹及方案保存
