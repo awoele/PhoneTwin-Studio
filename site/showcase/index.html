@@ -49,7 +49,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:20px;ma
 <style>
 .page{max-width:1440px;padding:28px clamp(20px,4vw,56px) 42px}.showcase-nav{display:flex;align-items:center;justify-content:space-between;gap:16px}.showcase-nav a{color:#c5cad5;font-size:12px}.showcase-nav small{color:#7f899a;margin-left:12px;font:10px Consolas,monospace;letter-spacing:2px}.intro{margin:40px 0 26px}.intro h1{font-size:clamp(30px,4.6vw,56px);font-weight:550;letter-spacing:-2px}.intro p{font-size:13px;max-width:640px}.viewport{border:1px solid #ffffff12}.background-controls{margin-bottom:16px}.scene-note{display:none}.shot-row{margin-bottom:20px}.case-note{font-size:12px;line-height:1.8;color:#949eaf;max-width:780px;margin:24px 0}.footer a{color:#959faf}.transport .primary{min-width:100px}.production{display:none}.export-frame .case-note{display:none}@media(max-width:600px){.showcase-nav small{display:none}.intro{margin-top:24px}.intro h1{letter-spacing:-1px}.shot-row{grid-template-columns:repeat(4,1fr)}}
 .transport button{flex-shrink:0;white-space:nowrap}
-</style><meta name="description" content="PhoneTwin Studio Showcase：TravelFilm 的35秒连续3D运镜宣传预演，八张真机截图、动态背景与悬浮定版。">  <script type="module" crossorigin src="./runtime/index-Das60Yrz.js"></script>
+</style><meta name="description" content="PhoneTwin Studio Showcase：TravelFilm 的35秒连续3D运镜宣传预演，八张真机截图、动态背景与悬浮定版。">  <script type="module" crossorigin src="./runtime/index-DqeO_AhE.js"></script>
 </head>
 <body>
 <main class="page">
@@ -66,12 +66,13 @@ header{display:flex;align-items:center;justify-content:space-between;gap:20px;ma
 <div class="copy" id="copy"><h2 id="title"></h2><p id="subtitle"></p></div>
 </div></div>
 <p class="scene-note" id="source-note"></p><p class="scene-note" id="perf-status" aria-live="off">预演刷新率：待播放</p>
-<div class="transport"><button class="primary" id="play">播放预演</button><button id="restart">回到开头</button><input id="scrub" type="range" min="0" max="1049" value="0" step="1" aria-label="宣传片分镜时间线"><output class="time" id="time">00:00.00 / 00:35</output></div>
+<audio id="showcase-bgm" src="./runtime/showcase-purusha-climax-BoAJMhJH.mp3" preload="metadata"></audio>
+<div class="transport"><button class="primary" id="play">播放预演</button><button id="restart">回到开头</button><button id="sound-toggle" aria-pressed="false" title="背景音乐 · M 键开关">开启声音</button><input id="scrub" type="range" min="0" max="1049" value="0" step="1" aria-label="宣传片分镜时间线"><output class="time" id="time">00:00.00 / 00:35</output></div>
 <nav class="shot-row" id="shots" aria-label="分镜章节"></nav>
 <section class="production"><div><h3 id="shot-name">当前镜头</h3><p id="action"></p><div class="detail" id="frame-budget"></div></div>
 <div><h3>八段主动作，八种视觉节奏。</h3><p>瞬翻揭幕、低位升降、纵深急推、横向滑轨、弧线环绕、俯仰摇臂、斜轴回正、悬浮定版。主段分别突出翻转、升降、距离、横移、绕行、俯仰、画面倾斜和漂浮，不重复同一套轻微摆动。衔接沿同一条连续路径，文字只在留白与阅读时段出现。</p><p>当前为35秒3D宣传预演：八段分别使用八张用户提供的真机截图，票根已有照片；原星图镜头改为从 KM 统计进入的 Travel motion 卡片。画面并非操作录屏，尚未输出最终 MP4 或配乐影片。精确镜头路径在分镜 JSON 中，不是现有工作台的一键导入功能。</p>
 <div class="links"><a href="design-spec.md">导演方案</a><a href="shotlist.json">精确镜头路径</a></div></div></section>
-<p class="case-note">35 秒 · 八段连续运镜 · 八张用户提供的 iPhone 截图。此作品为截图驱动的 3D 宣传预演，不是 App 操作录屏或已导出的 MP4；可播放、拖动时间线、切换背景及全屏观看。</p><div class="footer">MADE WITH PHONETWIN STUDIO · <a href="../models/ATTRIBUTION.md">MODEL CREDIT</a></div>
+<p class="case-note">35 秒 · 八段连续运镜 · 八张用户提供的 iPhone 截图。此作品为截图驱动的 3D 宣传预演，不是 App 操作录屏或已导出的 MP4；可播放、拖动时间线、切换背景及全屏观看。</p><div class="footer">MADE WITH PHONETWIN STUDIO · BGM: PURUSHA / NVDES · <a href="../models/ATTRIBUTION.md">MODEL CREDIT</a></div>
 </main>
 <script>
 'use strict';
@@ -116,9 +117,9 @@ function render(f,force=false){
  const integer=Math.floor(frame);
  if(integer!==displayFrame){displayFrame=integer;document.getElementById('scrub').value=String(integer);
  document.getElementById('time').textContent='00:'+String(Math.floor(frame/30)).padStart(2,'0')+'.'+String(integer%30).padStart(2,'0')+' / 00:35';}
- window.dispatchEvent(new CustomEvent('promo-frame',{detail:{frame,index,local,shot:s,fps:film.fps,backdrop}}));
+ window.dispatchEvent(new CustomEvent('promo-frame',{detail:{frame,index,local,shot:s,fps:film.fps,backdrop,playing}}));
 }
-function pause(){playing=false;queuedPlay=false;cancelAnimationFrame(animationId);animationId=0;document.getElementById('play').textContent='播放预演'}
+function pause(){playing=false;queuedPlay=false;cancelAnimationFrame(animationId);animationId=0;document.getElementById('play').textContent='播放预演';window.dispatchEvent(new CustomEvent('promo-playback',{detail:{frame,fps:film?.fps||30,playing}}))}
 function loop(time){
  animationId=0;if(!playing||document.hidden)return;render(Math.min(stopFrame??1049,startFrame+(time-clockStart)*film.fps/1000));
  statFrames++;if(time-statStart>=1000){const status=document.getElementById('perf-status'),fps=Math.round(statFrames*1000/(time-statStart));status.textContent='实际预演：'+fps+' fps · 自适应 '+(status.dataset.resolution||'')+' · 连续路径';status.dataset.fps=String(fps);statFrames=0;statStart=time;}
@@ -133,6 +134,7 @@ function play(){
  if(!modelReady){queuedPlay=true;document.getElementById('play').textContent='模型加载中';return}
  queuedPlay=false;if(frame===1049)render(0);playing=true;startFrame=frame;clockStart=performance.now();statStart=clockStart;statFrames=0;
  document.getElementById('play').textContent='暂停';if(!document.hidden)animationId=requestAnimationFrame(loop);
+ window.dispatchEvent(new CustomEvent('promo-playback',{detail:{frame,fps:film.fps,playing}}));
 }
 document.addEventListener('visibilitychange',()=>{if(!playing)return;cancelAnimationFrame(animationId);animationId=0;startFrame=frame;clockStart=performance.now();statStart=clockStart;statFrames=0;if(!document.hidden)animationId=requestAnimationFrame(loop)});
 window.addEventListener('promo-model-ready',()=>{modelReady=true;render(frame,true);if(queuedPlay)play()});
