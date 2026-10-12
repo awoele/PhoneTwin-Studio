@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN" data-model-url="../models/iphone-17-pro-max-ranguel.glb">
+<html lang="zh-CN" data-model-url="../models/iphone-17-pro-max-ranguel.glb" data-autoplay="true" data-loop="true">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>TravelFilm — PhoneTwin Studio Showcase</title>
@@ -47,14 +47,14 @@ header{display:flex;align-items:center;justify-content:space-between;gap:20px;ma
 </style>
 
 <style>
-.page{max-width:1440px;padding:28px clamp(20px,4vw,56px) 42px}.showcase-nav{display:flex;align-items:center;justify-content:space-between;gap:16px}.showcase-nav a{color:#c5cad5;font-size:12px}.showcase-nav small{color:#7f899a;margin-left:12px;font:10px Consolas,monospace;letter-spacing:2px}.intro{margin:40px 0 26px}.intro h1{font-size:clamp(30px,4.6vw,56px);font-weight:550;letter-spacing:-2px}.intro p{font-size:13px;max-width:640px}.viewport{border:1px solid #ffffff12}.background-controls{margin-bottom:16px}.scene-note{display:none}.shot-row{margin-bottom:20px}.case-note{font-size:12px;line-height:1.8;color:#949eaf;max-width:780px;margin:24px 0}.footer a{color:#959faf}.transport .primary{min-width:100px}.production{display:none}.export-frame .case-note{display:none}@media(max-width:600px){.showcase-nav small{display:none}.intro{margin-top:24px}.intro h1{letter-spacing:-1px}.shot-row{grid-template-columns:repeat(4,1fr)}}
+.page{max-width:1440px;padding:28px clamp(20px,4vw,56px) 42px}.showcase-nav{display:flex;align-items:center;justify-content:space-between;gap:16px}.showcase-nav a{color:#c5cad5;font-size:12px}.showcase-nav small{color:#7f899a;margin-left:12px;font:10px Consolas,monospace;letter-spacing:2px}.intro{margin:40px 0 26px}.intro h1{font-size:clamp(30px,4.6vw,56px);font-weight:550;letter-spacing:-2px}.intro p{font-size:13px;max-width:none}.viewport{border:1px solid #ffffff12}.background-controls{margin-bottom:16px}.scene-note{display:none}.shot-row{margin-bottom:20px}.case-note{font-size:12px;line-height:1.8;color:#949eaf;max-width:780px;margin:24px 0}.footer a{color:#959faf}.transport .primary{min-width:100px}.production{display:none}.export-frame .case-note{display:none}@media(max-width:600px){.showcase-nav small{display:none}.intro{margin-top:24px}.intro h1{letter-spacing:-1px}.shot-row{grid-template-columns:repeat(4,1fr)}}
 .transport button{flex-shrink:0;white-space:nowrap}
-</style><meta name="description" content="PhoneTwin Studio Showcase：TravelFilm 的35秒连续3D运镜宣传预演，八张真机截图、动态背景与悬浮定版。">  <script type="module" crossorigin src="./runtime/index-DqeO_AhE.js"></script>
+</style><meta name="description" content="PhoneTwin Studio Showcase：TravelFilm 的35秒连续3D运镜宣传预演，八张真机截图、动态背景与悬浮定版。">  <script type="module" crossorigin src="./runtime/index-vjwyMtCF.js"></script>
 </head>
 <body>
 <main class="page">
 <header class="showcase-nav"><div class="identity">PhoneTwin <span>Studio</span><small>SHOWCASE</small></div><a href="../">← 返回工作台</a></header>
-<div class="intro"><div><h1>TravelFilm. In motion.</h1><p>从胶卷走进照片与足迹，抽取回忆、留存票根，再将旅行统计生成里程卡片。用 PhoneTwin Studio 呈现完整的浏览路径。</p></div><div class="keys"><button id="play-full">播放 Showcase</button><button id="immersive">全屏观看</button></div></div>
+<div class="intro"><div><h1>TravelFilm. In motion.</h1><p>沿着胶卷、照片、足迹与回忆的浏览路径，呈现完整旅程。</p></div><div class="keys"><button id="play-full">播放 Showcase</button><button id="immersive">全屏观看</button></div></div>
 <div class="background-controls" id="background-controls" role="group" aria-label="工作台背景"><span>背景</span>
 <button data-background="flow-amethyst" aria-pressed="true"><i style="--swatch-a:#7923c5;--swatch-b:#df8ddc" aria-hidden="true"></i>粉紫流体</button>
 <button data-background="flow-glacier" aria-pressed="false"><i style="--swatch-a:#294d40;--swatch-b:#63917b" aria-hidden="true"></i>灰绿流体</button>
@@ -77,6 +77,8 @@ header{display:flex;align-items:center;justify-content:space-between;gap:20px;ma
 <script>
 'use strict';
 const previewParams=new URLSearchParams(location.search);
+const autoplayRequested=previewParams.has('autoplay')?previewParams.get('autoplay')==='1':document.documentElement.dataset.autoplay==='true';
+const loopRequested=previewParams.has('loop')?previewParams.get('loop')==='1':document.documentElement.dataset.loop==='true';
 if(previewParams.get('clean')==='1')document.body.classList.add('export-frame');
 const clamp=x=>Math.max(0,Math.min(1,x));
 const smootherStep=value=>{const t=clamp(value);return t*t*t*(t*(t*6-15)+10)};
@@ -124,7 +126,7 @@ function loop(time){
  animationId=0;if(!playing||document.hidden)return;render(Math.min(stopFrame??1049,startFrame+(time-clockStart)*film.fps/1000));
  statFrames++;if(time-statStart>=1000){const status=document.getElementById('perf-status'),fps=Math.round(statFrames*1000/(time-statStart));status.textContent='实际预演：'+fps+' fps · 自适应 '+(status.dataset.resolution||'')+' · 连续路径';status.dataset.fps=String(fps);statFrames=0;statStart=time;}
  if(stopFrame!==null&&frame>=stopFrame){pause();return}
- if(frame===1049){pause();if(previewParams.get('loop')==='1'){render(0);play()}return}
+ if(frame===1049){pause();if(loopRequested){render(0);play()}return}
  animationId=requestAnimationFrame(loop);
 }
 function seek(f){pause();stopFrame=null;render(f)}
@@ -152,7 +154,7 @@ fetch('shotlist.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('时间�
   b.addEventListener('click',()=>playScene(s));document.getElementById('shots').appendChild(b);
  });
  resize();const initial=Number(previewParams.get('frame')??0);render(Number.isFinite(initial)?initial:0);
- if(previewParams.get('autoplay')==='1'&&!matchMedia('(prefers-reduced-motion: reduce)').matches)play();
+ if(autoplayRequested&&!matchMedia('(prefers-reduced-motion: reduce)').matches)play();
 }).catch(e=>{document.getElementById('source-note').textContent=e.message+'：请通过本地预览链接打开。'});
 document.addEventListener('keydown',e=>{
  if(['INPUT','TEXTAREA'].includes(e.target.tagName))return;
