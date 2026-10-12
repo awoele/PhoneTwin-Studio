@@ -59,10 +59,13 @@ html,body{height:100%;overflow:hidden;background:#08090d}
 .studio-arrow[hidden]{display:none}.studio-arrow svg{width:25px;height:25px}.studio-arrow:hover{background:#f4f1ea;color:#11121a;scale:1.06}.studio-arrow:focus-visible{outline:2px solid #fff;outline-offset:5px}
 @keyframes entry-reveal{from{opacity:0;translate:10px 0}to{opacity:1;translate:0 0}}
 @media(max-aspect-ratio:1/1){.landing-hero{height:auto;aspect-ratio:16/9}}
-.music-toggle{position:absolute;top:22px;right:22px;z-index:6;width:40px;height:40px;padding:10px;border-radius:50%;border-color:#ffffff25;background:#11131b70;backdrop-filter:blur(18px);color:#eee}.music-toggle svg{display:block;width:18px;height:18px}.music-toggle[aria-pressed="true"] .mute-mark{display:none}
-@media(max-width:650px){.studio-arrow{width:50px;height:50px}.studio-arrow svg{width:22px;height:22px}.music-toggle{top:14px;right:14px;width:34px;height:34px;padding:8px}}
-@media(prefers-reduced-motion:reduce){.studio-arrow{animation:none;transition:none}}
-</style>  <script type="module" crossorigin src="./landing-runtime/index-D1whG9_b.js"></script>
+.landing-controls{position:absolute;right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));display:flex;gap:8px;z-index:10;transition:opacity .25s}
+.landing-controls button,.landing-controls a{display:grid;place-items:center;width:38px;height:38px;padding:0;border:1px solid #ffffff30;border-radius:50%;color:#f4f1ea;background:#080a10b3;cursor:pointer;backdrop-filter:blur(12px)}
+.landing-controls svg{width:16px;height:16px;fill:currentColor}.landing-controls :focus-visible{outline:2px solid #ff7733;outline-offset:4px}
+body.landing-playing:not(.landing-interacting) .landing-controls{opacity:0}body.landing-playing .landing-controls:hover,body.landing-playing .landing-controls:focus-within{opacity:1}
+@media(max-width:650px){.studio-arrow{width:50px;height:50px}.studio-arrow svg{width:22px;height:22px}}
+@media(prefers-reduced-motion:reduce){.studio-arrow{animation:none;transition:none}.landing-controls{transition:none}}
+</style>  <script type="module" crossorigin src="./landing-runtime/index-Cr79KYFs.js"></script>
 </head>
 <body>
 <main class="page landing-page">
@@ -77,7 +80,7 @@ html,body{height:100%;overflow:hidden;background:#08090d}
 <section class="landing-hero" id="showcase"><div class="viewport" id="viewport"><div class="stage" id="stage">
 <div id="model-surface" aria-label="批准的真实3D手机与TravelFilm界面"></div><div id="model-state">加载工作台 3D 模型…</div>
 <div class="copy" id="copy"><h2 id="title"></h2><p id="subtitle"></p></div>
-</div></div><button class="music-toggle" id="landing-sound" aria-label="开启背景音乐" aria-pressed="false" title="开启背景音乐"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13M9 8l11-2"/><ellipse cx="6" cy="18" rx="3" ry="2.5"/><ellipse cx="17" cy="16" rx="3" ry="2.5"/><path class="mute-mark" d="M3 3l18 18"/></svg></button><a class="studio-arrow" id="studio-entry" href="workbench/" aria-label="进入工作台" title="进入工作台" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></section>
+</div></div><div class="landing-controls" aria-label="播放控制"><button id="landing-play" aria-label="播放" title="播放"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><button id="landing-sound" aria-label="开启背景音乐" aria-pressed="false" title="开启背景音乐"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v12a4 4 0 1 0 2 3V8l8-2v9a4 4 0 1 0 2 3V3z"/></svg></button><button id="landing-fullscreen" aria-label="全屏观看" title="全屏观看"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h7v2H5v5H3zm11 0h7v7h-2V5h-5zM3 14h2v5h5v2H3zm16 0h2v7h-7v-2h5z"/></svg></button><a href="models/ATTRIBUTION.md" aria-label="3D model by Ranguel, CC BY 4.0" title="3D model by Ranguel · CC BY 4.0"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 10h2v8h-2zm0-4h2v2h-2z"/></svg></a></div><a class="studio-arrow" id="studio-entry" href="workbench/" aria-label="进入工作台" title="进入工作台" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></section>
 <p class="scene-note" id="source-note"></p><p class="scene-note" id="perf-status" aria-live="off">预演刷新率：待播放</p>
 <audio id="showcase-bgm" src="./landing-runtime/showcase-purusha-climax-BoAJMhJH.mp3" preload="metadata"></audio>
 <div class="transport"><button class="primary" id="play">播放预演</button><button id="restart">回到开头</button><button id="sound-toggle" aria-pressed="false" title="背景音乐 · M 键开关">开启声音</button><input id="scrub" type="range" min="0" max="1049" value="0" step="1" aria-label="宣传片分镜时间线"><output class="time" id="time">00:00.00 / 00:35</output></div>
