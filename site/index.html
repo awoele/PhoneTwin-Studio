@@ -29,6 +29,11 @@ header{display:flex;align-items:center;justify-content:space-between;gap:20px;ma
 .brandmode .copy{left:280px;right:auto;width:700px}
 .brandmode .copy h2{font-size:112px;letter-spacing:-4px;font-weight:600}
 .brandmode .copy p{font-size:30px;letter-spacing:.5px}
+.stage.portrait .copy,.stage.portrait .copy[data-placement]{left:24px;right:24px;top:7%;width:auto;transform:none;text-align:center}
+.stage.portrait .copy h2{font-size:clamp(25px,7vw,34px);line-height:1.15;letter-spacing:-.8px;font-weight:550}
+.stage.portrait .copy p{font-size:14px;line-height:1.45;letter-spacing:0;margin:10px auto 0;max-width:320px}
+.stage.portrait.brandmode .copy h2{font-size:clamp(34px,10vw,44px);letter-spacing:-1.5px}
+@media(max-width:760px) and (orientation:portrait){.viewport{height:72dvh;min-height:420px;aspect-ratio:auto}}
 .scene-note{font-size:12px;color:var(--muted);line-height:1.8;margin:13px 0 18px}
 .transport{display:flex;align-items:center;gap:14px;padding:15px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .transport .primary{background:var(--paper);color:var(--ink);border-color:var(--paper)}.transport input{accent-color:var(--accent);width:100%;min-width:0}
@@ -58,14 +63,13 @@ html,body{height:100%;overflow:hidden;background:#08090d}
 .studio-arrow{position:absolute;left:14.58%;top:70%;z-index:6;display:grid;place-items:center;width:64px;height:64px;border:1px solid #ffffff45;border-radius:50%;background:#11131b85;color:#fff;backdrop-filter:blur(18px);box-shadow:0 8px 30px #0002;transition:background .25s,scale .25s;animation:entry-reveal .65s ease-out both}
 .studio-arrow[hidden]{display:none}.studio-arrow svg{width:25px;height:25px}.studio-arrow:hover{background:#f4f1ea;color:#11121a;scale:1.06}.studio-arrow:focus-visible{outline:2px solid #fff;outline-offset:5px}
 @keyframes entry-reveal{from{opacity:0;translate:10px 0}to{opacity:1;translate:0 0}}
-@media(max-aspect-ratio:1/1){.landing-hero{height:auto;aspect-ratio:16/9}}
 .landing-controls{position:absolute;right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));display:flex;gap:8px;z-index:10;transition:opacity .25s}
 .landing-controls button,.landing-controls a{display:grid;place-items:center;width:38px;height:38px;padding:0;border:1px solid #ffffff30;border-radius:50%;color:#f4f1ea;background:#080a10b3;cursor:pointer;backdrop-filter:blur(12px)}
 .landing-controls svg{width:16px;height:16px;fill:currentColor}.landing-controls :focus-visible{outline:2px solid #ff7733;outline-offset:4px}
 body.landing-playing:not(.landing-interacting) .landing-controls{opacity:0}body.landing-playing .landing-controls:hover,body.landing-playing .landing-controls:focus-within{opacity:1}
 @media(max-width:650px){.studio-arrow{width:50px;height:50px}.studio-arrow svg{width:22px;height:22px}}
 @media(prefers-reduced-motion:reduce){.studio-arrow{animation:none;transition:none}.landing-controls{transition:none}}
-</style>  <script type="module" crossorigin src="./landing-runtime/index-Cr79KYFs.js"></script>
+</style>  <script type="module" crossorigin src="./landing-runtime/index-CNQzVYV2.js"></script>
 </head>
 <body>
 <main class="page landing-page">
@@ -109,6 +113,9 @@ document.querySelectorAll('[data-background]').forEach(b=>b.addEventListener('cl
 window.addEventListener('storage',e=>{if(e.key==='phonetwin.backdrop'&&backdropIds.includes(e.newValue)){backdrop=e.newValue;syncBackgroundButtons();render(frame,true);}});
 let film,frame=0,playing=false,clockStart=0,startFrame=0,shotIndex=-1,modelReady=false,queuedPlay=false,stopFrame=null,animationId=0,statStart=0,statFrames=0,displayFrame=-1;
 function resize(){
+ const portrait=viewport.clientWidth<=760&&viewport.clientHeight>viewport.clientWidth;
+ stage.classList.toggle('portrait',portrait);stage.style.width=(portrait?viewport.clientWidth:1920)+'px';stage.style.height=(portrait?viewport.clientHeight:1080)+'px';
+ if(portrait){stage.style.transform='none';stage.style.left='0';stage.style.top='0';return;}
  const scale=document.documentElement.dataset.fit==='cover'?Math.max(viewport.clientWidth/1920,viewport.clientHeight/1080):Math.min(viewport.clientWidth/1920,viewport.clientHeight/1080);
  stage.style.transform='scale('+scale+')';
  stage.style.left=(viewport.clientWidth-1920*scale)/2+'px';
@@ -119,7 +126,7 @@ function render(f,force=false){
  if(!force&&nextFrame===frame&&shotIndex!==-1)return;
  frame=nextFrame;const index=film.shots.findIndex(s=>frame>=s.from&&frame<s.from+s.duration),s=film.shots[index],local=frame-s.from;
  if(index!==shotIndex){
-  shotIndex=index;stage.className='stage'+(index===7?' brandmode':'');
+  shotIndex=index;stage.classList.toggle('brandmode',index===7);
   document.getElementById('title').textContent=s.caption?.text||'';
   document.getElementById('subtitle').textContent=s.caption?.sub||'';
   document.getElementById('copy').dataset.placement=s.caption?.side||'left';
