@@ -2,7 +2,11 @@
 
 3D 手机产品演示工作台，由杨玄一设计并借助 AI 开发。
 
-**[打开在线工作台](https://awoele.github.io/PhoneTwin-Studio/)**
+**[打开 Studio 首页](https://awoele.github.io/PhoneTwin-Studio/)**
+
+首页仅保留圆角全屏 TravelFilm Showcase，自动播放一遍，结束后在最右侧显示圆形箭头进入工作台；工作台独立加载，保留原有功能。独立 Showcase 页面仍可循环、切换背景和控制播放。
+
+**[直接进入在线工作台](https://awoele.github.io/PhoneTwin-Studio/workbench/)**
 
 **[观看 TravelFilm Showcase](https://awoele.github.io/PhoneTwin-Studio/showcase/?autoplay=1&loop=1)**
 
