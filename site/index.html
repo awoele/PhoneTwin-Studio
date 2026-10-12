@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN" data-model-url="models/iphone-17-pro-max-ranguel.glb" data-shotlist-url="showcase/shotlist.json" data-play-once="true" data-autoplay="true" data-loop="false">
+<html lang="zh-CN" data-model-url="models/iphone-17-pro-max-ranguel.glb" data-shotlist-url="showcase/shotlist.json" data-play-once="true" data-fit="cover" data-autoplay="true" data-loop="false">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PhoneTwin Studio — Showcase</title>
@@ -51,16 +51,18 @@ header{display:flex;align-items:center;justify-content:space-between;gap:20px;ma
 .transport button{flex-shrink:0;white-space:nowrap}
 </style><meta name="description" content="PhoneTwin Studio Showcase：TravelFilm 的35秒连续3D运镜宣传预演，八张真机截图、动态背景与悬浮定版。"><style>
 html,body{height:100%;overflow:hidden;background:#08090d}
-.landing-page{max-width:none;height:100svh;padding:22px}
+.landing-page{max-width:none;height:100svh;padding:22px;display:grid;place-items:center}
 .landing-page>.intro,.landing-page>.background-controls,.landing-page>.scene-note,.landing-page>.transport,.landing-page>.shot-row,.landing-page>.production,.landing-page>.case-note,.landing-page>.footer{display:none}
 .landing-hero{position:relative;width:100%;height:100%;overflow:hidden;border-radius:28px;background:#080a10}
 .landing-hero .viewport{width:100%;height:100%;aspect-ratio:auto;border:0;border-radius:inherit;box-shadow:none;background:#080a10}
-.studio-arrow{position:absolute;right:26px;top:50%;z-index:6;transform:translateY(-50%);display:grid;place-items:center;width:64px;height:64px;border:1px solid #ffffff45;border-radius:50%;background:#11131b85;color:#fff;backdrop-filter:blur(18px);box-shadow:0 8px 30px #0002;transition:background .25s,scale .25s;animation:entry-reveal .65s ease-out both}
+.studio-arrow{position:absolute;left:14.58%;top:70%;z-index:6;display:grid;place-items:center;width:64px;height:64px;border:1px solid #ffffff45;border-radius:50%;background:#11131b85;color:#fff;backdrop-filter:blur(18px);box-shadow:0 8px 30px #0002;transition:background .25s,scale .25s;animation:entry-reveal .65s ease-out both}
 .studio-arrow[hidden]{display:none}.studio-arrow svg{width:25px;height:25px}.studio-arrow:hover{background:#f4f1ea;color:#11121a;scale:1.06}.studio-arrow:focus-visible{outline:2px solid #fff;outline-offset:5px}
 @keyframes entry-reveal{from{opacity:0;translate:10px 0}to{opacity:1;translate:0 0}}
-@media(max-width:650px){.landing-page{padding:12px}.landing-hero{border-radius:22px}.studio-arrow{right:18px;width:50px;height:50px}.studio-arrow svg{width:22px;height:22px}}
+@media(max-aspect-ratio:1/1){.landing-hero{height:auto;aspect-ratio:16/9}}
+.music-toggle{position:absolute;top:22px;right:22px;z-index:6;width:40px;height:40px;padding:10px;border-radius:50%;border-color:#ffffff25;background:#11131b70;backdrop-filter:blur(18px);color:#eee}.music-toggle svg{display:block;width:18px;height:18px}.music-toggle[aria-pressed="true"] .mute-mark{display:none}
+@media(max-width:650px){.landing-page{padding:12px}.landing-hero{border-radius:22px}.studio-arrow{width:50px;height:50px}.studio-arrow svg{width:22px;height:22px}.music-toggle{top:14px;right:14px;width:34px;height:34px;padding:8px}}
 @media(prefers-reduced-motion:reduce){.studio-arrow{animation:none;transition:none}}
-</style>  <script type="module" crossorigin src="./landing-runtime/index-Ckktc22y.js"></script>
+</style>  <script type="module" crossorigin src="./landing-runtime/index-D1whG9_b.js"></script>
 </head>
 <body>
 <main class="page landing-page">
@@ -75,7 +77,7 @@ html,body{height:100%;overflow:hidden;background:#08090d}
 <section class="landing-hero" id="showcase"><div class="viewport" id="viewport"><div class="stage" id="stage">
 <div id="model-surface" aria-label="批准的真实3D手机与TravelFilm界面"></div><div id="model-state">加载工作台 3D 模型…</div>
 <div class="copy" id="copy"><h2 id="title"></h2><p id="subtitle"></p></div>
-</div></div><a class="studio-arrow" id="studio-entry" href="workbench/" aria-label="进入工作台" title="进入工作台" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></section>
+</div></div><button class="music-toggle" id="landing-sound" aria-label="开启背景音乐" aria-pressed="false" title="开启背景音乐"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13M9 8l11-2"/><ellipse cx="6" cy="18" rx="3" ry="2.5"/><ellipse cx="17" cy="16" rx="3" ry="2.5"/><path class="mute-mark" d="M3 3l18 18"/></svg></button><a class="studio-arrow" id="studio-entry" href="workbench/" aria-label="进入工作台" title="进入工作台" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></section>
 <p class="scene-note" id="source-note"></p><p class="scene-note" id="perf-status" aria-live="off">预演刷新率：待播放</p>
 <audio id="showcase-bgm" src="./landing-runtime/showcase-purusha-climax-BoAJMhJH.mp3" preload="metadata"></audio>
 <div class="transport"><button class="primary" id="play">播放预演</button><button id="restart">回到开头</button><button id="sound-toggle" aria-pressed="false" title="背景音乐 · M 键开关">开启声音</button><input id="scrub" type="range" min="0" max="1049" value="0" step="1" aria-label="宣传片分镜时间线"><output class="time" id="time">00:00.00 / 00:35</output></div>
@@ -97,13 +99,14 @@ const smootherStep=value=>{const t=clamp(value);return t*t*t*(t*(t*6-15)+10)};
 const stage=document.getElementById('stage'),viewport=document.getElementById('viewport');
 const backdropIds=['flow-amethyst','flow-glacier','flow-sunset','flow-jade'];
 let backdrop='flow-amethyst';
-try{const saved=localStorage.getItem('phonetwin.promo.backdrop')||localStorage.getItem('phonetwin.backdrop');if(backdropIds.includes(saved))backdrop=saved}catch{}
+try{const saved=localStorage.getItem('phonetwin.backdrop')||localStorage.getItem('phonetwin.promo.backdrop');if(backdropIds.includes(saved))backdrop=saved}catch{}
 function syncBackgroundButtons(){document.querySelectorAll('[data-background]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.background===backdrop)))}
 syncBackgroundButtons();
-document.querySelectorAll('[data-background]').forEach(b=>b.addEventListener('click',()=>{backdrop=b.dataset.background;try{localStorage.setItem('phonetwin.promo.backdrop',backdrop)}catch{}syncBackgroundButtons();render(frame,true)}));
+document.querySelectorAll('[data-background]').forEach(b=>b.addEventListener('click',()=>{backdrop=b.dataset.background;try{localStorage.setItem('phonetwin.backdrop',backdrop)}catch{}syncBackgroundButtons();render(frame,true)}));
+window.addEventListener('storage',e=>{if(e.key==='phonetwin.backdrop'&&backdropIds.includes(e.newValue)){backdrop=e.newValue;syncBackgroundButtons();render(frame,true);}});
 let film,frame=0,playing=false,clockStart=0,startFrame=0,shotIndex=-1,modelReady=false,queuedPlay=false,stopFrame=null,animationId=0,statStart=0,statFrames=0,displayFrame=-1;
 function resize(){
- const scale=Math.min(viewport.clientWidth/1920,viewport.clientHeight/1080);
+ const scale=document.documentElement.dataset.fit==='cover'?Math.max(viewport.clientWidth/1920,viewport.clientHeight/1080):Math.min(viewport.clientWidth/1920,viewport.clientHeight/1080);
  stage.style.transform='scale('+scale+')';
  stage.style.left=(viewport.clientWidth-1920*scale)/2+'px';
  stage.style.top=(viewport.clientHeight-1080*scale)/2+'px';

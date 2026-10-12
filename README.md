@@ -4,7 +4,7 @@
 
 **[打开 Studio 首页](https://awoele.github.io/PhoneTwin-Studio/)**
 
-首页仅保留圆角全屏 TravelFilm Showcase，自动播放一遍，结束后在最右侧显示圆形箭头进入工作台；工作台独立加载，保留原有功能。独立 Showcase 页面仍可循环、切换背景和控制播放。
+首页以圆角全屏 TravelFilm Showcase 开场，仅保留音乐图标开关；自动播放一遍后，在左侧标题下显示圆形箭头进入工作台。工作台独立加载，保留原有功能；两者共享模型尺寸、机身厚度修正、材质、灯光预设和四种动态背景。独立 Showcase 页面仍可循环、切换背景和控制播放。
 
 **[直接进入在线工作台](https://awoele.github.io/PhoneTwin-Studio/workbench/)**
 
