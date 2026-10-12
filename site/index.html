@@ -33,6 +33,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:20px;ma
 .stage.portrait .copy h2{font-size:clamp(25px,7vw,34px);line-height:1.15;letter-spacing:-.8px;font-weight:550}
 .stage.portrait .copy p{font-size:14px;line-height:1.45;letter-spacing:0;margin:10px auto 0;max-width:320px}
 .stage.portrait.brandmode .copy h2{font-size:clamp(34px,10vw,44px);letter-spacing:-1.5px}
+.stage.portrait.detailmode::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:2;background:linear-gradient(#080a109e,transparent 34%)}
 @media(max-width:760px) and (orientation:portrait){.viewport{height:72dvh;min-height:420px;aspect-ratio:auto}}
 .scene-note{font-size:12px;color:var(--muted);line-height:1.8;margin:13px 0 18px}
 .transport{display:flex;align-items:center;gap:14px;padding:15px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -69,7 +70,7 @@ html,body{height:100%;overflow:hidden;background:#08090d}
 body.landing-playing:not(.landing-interacting) .landing-controls{opacity:0}body.landing-playing .landing-controls:hover,body.landing-playing .landing-controls:focus-within{opacity:1}
 @media(max-width:650px){.studio-arrow{width:50px;height:50px}.studio-arrow svg{width:22px;height:22px}}
 @media(prefers-reduced-motion:reduce){.studio-arrow{animation:none;transition:none}.landing-controls{transition:none}}
-</style>  <script type="module" crossorigin src="./landing-runtime/index-CNQzVYV2.js"></script>
+</style>  <script type="module" crossorigin src="./landing-runtime/index-QaqxpZt4.js"></script>
 </head>
 <body>
 <main class="page landing-page">
@@ -126,7 +127,7 @@ function render(f,force=false){
  if(!force&&nextFrame===frame&&shotIndex!==-1)return;
  frame=nextFrame;const index=film.shots.findIndex(s=>frame>=s.from&&frame<s.from+s.duration),s=film.shots[index],local=frame-s.from;
  if(index!==shotIndex){
-  shotIndex=index;stage.classList.toggle('brandmode',index===7);
+  shotIndex=index;stage.classList.toggle('brandmode',index===7);stage.classList.toggle('detailmode',s.framing==='detail');
   document.getElementById('title').textContent=s.caption?.text||'';
   document.getElementById('subtitle').textContent=s.caption?.sub||'';
   document.getElementById('copy').dataset.placement=s.caption?.side||'left';
