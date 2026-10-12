@@ -49,7 +49,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:20px;ma
 <style>
 .page{max-width:1440px;padding:28px clamp(20px,4vw,56px) 42px}.showcase-nav{display:flex;align-items:center;justify-content:space-between;gap:16px}.showcase-nav a{color:#c5cad5;font-size:12px}.showcase-nav small{color:#7f899a;margin-left:12px;font:10px Consolas,monospace;letter-spacing:2px}.intro{margin:40px 0 26px}.intro h1{font-size:clamp(30px,4.6vw,56px);font-weight:550;letter-spacing:-2px}.intro p{font-size:13px;max-width:640px}.viewport{border:1px solid #ffffff12}.background-controls{margin-bottom:16px}.scene-note{display:none}.shot-row{margin-bottom:20px}.case-note{font-size:12px;line-height:1.8;color:#949eaf;max-width:780px;margin:24px 0}.footer a{color:#959faf}.transport .primary{min-width:100px}.production{display:none}.export-frame .case-note{display:none}@media(max-width:600px){.showcase-nav small{display:none}.intro{margin-top:24px}.intro h1{letter-spacing:-1px}.shot-row{grid-template-columns:repeat(4,1fr)}}
 .transport button{flex-shrink:0;white-space:nowrap}
-</style><meta name="description" content="PhoneTwin Studio Showcase：TravelFilm 的35秒连续3D运镜宣传预演，八张真机截图、动态背景与悬浮定版。">  <script type="module" crossorigin src="./runtime/index-sDjcCpsN.js"></script>
+</style><meta name="description" content="PhoneTwin Studio Showcase：TravelFilm 的35秒连续3D运镜宣传预演，八张真机截图、动态背景与悬浮定版。">  <script type="module" crossorigin src="./runtime/index-Das60Yrz.js"></script>
 </head>
 <body>
 <main class="page">
@@ -143,7 +143,7 @@ document.getElementById('restart').addEventListener('click',()=>seek(0));
 document.getElementById('scrub').addEventListener('input',e=>seek(Number(e.target.value)));
 document.querySelectorAll('[data-frame]').forEach(b=>b.addEventListener('click',()=>seek(Number(b.dataset.frame))));
 document.getElementById('immersive').addEventListener('click',async()=>{if(document.fullscreenElement)await document.exitFullscreen();else await viewport.requestFullscreen()});
-fetch('shotlist.json').then(r=>{if(!r.ok)throw Error('时间线加载失败');return r.json()}).then(data=>{
+fetch('shotlist.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('时间线加载失败');return r.json()}).then(data=>{
  film=data;film.shots.forEach(s=>{
   const b=document.createElement('button');
   b.innerHTML='<span class="timing">'+String(s.from/30).padStart(2,'0')+'—'+String((s.from+s.duration)/30).padStart(2,'0')+' SEC</span><span class="name">'+(s.journeyLabel||s.label)+'</span>';
