@@ -54,7 +54,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:20px;ma
 <body>
 <main class="page">
 <header class="showcase-nav"><div class="identity">PhoneTwin <span>Studio</span><small>SHOWCASE</small></div><a href="../">← 返回工作台</a></header>
-<div class="intro"><div><h1>TravelFilm. In motion.</h1><p>从旅行照片到胶卷、足迹与回忆卡片。用 PhoneTwin Studio 的连续 3D 镜头呈现一段旅程。</p></div><div class="keys"><button id="play-full">播放 Showcase</button><button id="immersive">全屏观看</button></div></div>
+<div class="intro"><div><h1>TravelFilm. In motion.</h1><p>从胶卷走进照片与足迹，抽取回忆、留存票根，再将旅行统计生成里程卡片。用 PhoneTwin Studio 呈现完整的浏览路径。</p></div><div class="keys"><button id="play-full">播放 Showcase</button><button id="immersive">全屏观看</button></div></div>
 <div class="background-controls" id="background-controls" role="group" aria-label="工作台背景"><span>背景</span>
 <button data-background="flow-amethyst" aria-pressed="true"><i style="--swatch-a:#7923c5;--swatch-b:#df8ddc" aria-hidden="true"></i>粉紫流体</button>
 <button data-background="flow-glacier" aria-pressed="false"><i style="--swatch-a:#294d40;--swatch-b:#63917b" aria-hidden="true"></i>灰绿流体</button>
@@ -146,7 +146,7 @@ document.getElementById('immersive').addEventListener('click',async()=>{if(docum
 fetch('shotlist.json').then(r=>{if(!r.ok)throw Error('时间线加载失败');return r.json()}).then(data=>{
  film=data;film.shots.forEach(s=>{
   const b=document.createElement('button');
-  b.innerHTML='<span class="timing">'+String(s.from/30).padStart(2,'0')+'—'+String((s.from+s.duration)/30).padStart(2,'0')+' SEC</span><span class="name">'+s.label+'</span>';
+  b.innerHTML='<span class="timing">'+String(s.from/30).padStart(2,'0')+'—'+String((s.from+s.duration)/30).padStart(2,'0')+' SEC</span><span class="name">'+(s.journeyLabel||s.label)+'</span>';
   b.addEventListener('click',()=>playScene(s));document.getElementById('shots').appendChild(b);
  });
  resize();const initial=Number(previewParams.get('frame')??0);render(Number.isFinite(initial)?initial:0);
